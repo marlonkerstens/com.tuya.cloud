@@ -13,6 +13,9 @@ class TuyaPetFeederDevice extends TuyaBaseDevice {
         this.registerMultipleCapabilityListener(['petfeeder_voice_times'], async (values, options) => {
             return this._onMultipleCapabilityListener(values, options);
         }, CAPABILITIES_SET_DEBOUNCE);
+        this.registerCapabilityListener('quick_feed', async () => {
+            this.quickFeed();
+        });
         this.log(`Tuya Pet Feeder ${this.getName()} has been initialized`);
     }
 

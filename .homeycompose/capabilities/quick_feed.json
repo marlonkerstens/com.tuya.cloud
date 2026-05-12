@@ -1,0 +1,7 @@
+{
+  "type": "button",
+  "title": { "en": "Quick Feed", "nl": "Snel voeren" },
+  "getable": false,
+  "setable": true,
+  "uiComponent": "button"
+}

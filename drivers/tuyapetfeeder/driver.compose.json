@@ -5,6 +5,7 @@
   },
   "class": "other",
   "capabilities": [
+    "quick_feed",
     "petfeeder_feed_state",
     "petfeeder_feed_report",
     "measure_battery",
