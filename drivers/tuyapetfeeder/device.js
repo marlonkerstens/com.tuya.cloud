@@ -69,7 +69,9 @@ class TuyaPetFeederDevice extends TuyaBaseDevice {
                     break;
 
                 case 'voice_times':
-                    this.normalAsync('petfeeder_voice_times', status.value);
+                    if (this.hasCapability('petfeeder_voice_times')) {
+                        this.normalAsync('petfeeder_voice_times', status.value);
+                    }
                     break;
 
                 // meal_plan is Raw/complex – we only log it, not displayed in UI
@@ -116,7 +118,9 @@ class TuyaPetFeederDevice extends TuyaBaseDevice {
         const safe = Math.min(5, Math.max(0, Math.round(times)));
         this.log(`Pet feeder: set voice_times to ${safe}`);
         this.sendCommand('voice_times', safe);
-        this.normalAsync('petfeeder_voice_times', safe);
+        if (this.hasCapability('petfeeder_voice_times')) {
+            this.normalAsync('petfeeder_voice_times', safe);
+        }
     }
 
     /**
