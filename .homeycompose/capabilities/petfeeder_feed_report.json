@@ -1,0 +1,13 @@
+{
+  "type": "number",
+  "title": { "en": "Portions dispensed", "nl": "Uitgedeelde porties" },
+  "desc": { "en": "Number of portions actually dispensed", "nl": "Aantal daadwerkelijk uitgedeelde porties" },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "min": 0,
+  "max": 50,
+  "step": 1,
+  "decimals": 0,
+  "insights": true
+}
