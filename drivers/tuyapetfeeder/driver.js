@@ -73,11 +73,11 @@ class TuyaPetFeederDriver extends TuyaBaseDriver {
             devices.push({
                 data: { id: tuyaDevice.id },
                 capabilities: [
+                    'quick_feed',
                     'petfeeder_feed_state',
                     'petfeeder_feed_report',
                     'measure_battery',
-                    'alarm_battery',
-                    'petfeeder_voice_times'
+                    'alarm_battery'
                 ],
                 name: tuyaDevice.name
             });
