@@ -114,6 +114,49 @@
       },
       {
         "title": {
+          "en": "Pet feeder: feeding state changed",
+          "nl": "Voerautomaat: voederstatus gewijzigd"
+        },
+        "titleFormatted": {
+          "en": "Pet feeder feeding state changed to [[feed_state]]",
+          "nl": "Voerautomaat voederstatus gewijzigd naar [[feed_state]]"
+        },
+        "tokens": [
+          {
+            "name": "feed_state",
+            "type": "string",
+            "title": {
+              "en": "State",
+              "nl": "Status"
+            },
+            "example": "done"
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=tuyapetfeeder"
+          }
+        ],
+        "id": "petfeeder_feed_state_changed"
+      },
+      {
+        "title": {
+          "en": "Pet feeder: feeding completed",
+          "nl": "Voerautomaat: voeren voltooid"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=tuyapetfeeder"
+          }
+        ],
+        "id": "petfeeder_feeding_done"
+      },
+      {
+        "title": {
           "en": "Socket is turned on/off",
           "nl": "stopcontact is aan/uit gezet"
         },
@@ -165,12 +208,12 @@
       {
         "title": {
           "en": "Mode has changed",
-          "de": "Modus hat sich ge\u00e4ndert",
+          "de": "Modus hat sich geändert",
           "nl": "Modus is veranderd"
         },
         "hint": {
           "en": "Triggers when the mode changes.",
-          "de": "Wird ausgel\u00f6st, wenn sich der Modus \u00e4ndert.",
+          "de": "Wird ausgelöst, wenn sich der Modus ändert.",
           "nl": "Wordt geactiveerd wanneer de modus verandert."
         },
         "tokens": [
@@ -331,49 +374,6 @@
             "filter": "driver_id=dehumidifier"
           }
         ]
-      },
-      {
-        "id": "petfeeder_feed_state_changed",
-        "title": {
-          "en": "Pet feeder: feeding state changed",
-          "nl": "Voerautomaat: voederstatus gewijzigd"
-        },
-        "titleFormatted": {
-          "en": "Pet feeder feeding state changed to [[feed_state]]",
-          "nl": "Voerautomaat voederstatus gewijzigd naar [[feed_state]]"
-        },
-        "tokens": [
-          {
-            "name": "feed_state",
-            "type": "string",
-            "title": {
-              "en": "State",
-              "nl": "Status"
-            },
-            "example": "done"
-          }
-        ],
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=tuyapetfeeder"
-          }
-        ]
-      },
-      {
-        "id": "petfeeder_feeding_done",
-        "title": {
-          "en": "Pet feeder: feeding completed",
-          "nl": "Voerautomaat: voeren voltooid"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=tuyapetfeeder"
-          }
-        ]
       }
     ],
     "conditions": [
@@ -406,12 +406,12 @@
       {
         "title": {
           "en": "Temperature !{{is|isn't}} higher than",
-          "de": "Temperatur !{{ist|ist nicht}} gr\u00f6\u00dfer als",
+          "de": "Temperatur !{{ist|ist nicht}} größer als",
           "nl": "Temperatuur !{{is|is niet}} hoger dan"
         },
         "titleFormatted": {
           "en": "Temperature !{{is|isn't}} higher than [[measure_temperature]]",
-          "de": "Temperatur !{{ist|ist nicht}} gr\u00f6\u00dfer als [[measure_temperature]]",
+          "de": "Temperatur !{{ist|ist nicht}} größer als [[measure_temperature]]",
           "nl": "Temperatuur !{{is|is niet}} hoger dan [[measure_temperature]]"
         },
         "hint": {
@@ -435,12 +435,12 @@
       {
         "title": {
           "en": "Target temperature !{{is|isn't}} higher than",
-          "de": "Zieltemperatur !{{ist|ist nicht}} gr\u00f6\u00dfer als",
+          "de": "Zieltemperatur !{{ist|ist nicht}} größer als",
           "nl": "Doeltemperatuur !{{is|is niet}} hoger dan"
         },
         "titleFormatted": {
           "en": "Target temperature !{{is|isn't}} higher than [[target_temperature]]",
-          "de": "Zieltemperatur !{{ist|ist nicht}} gr\u00f6\u00dfer als [[target_temperature]]",
+          "de": "Zieltemperatur !{{ist|ist nicht}} größer als [[target_temperature]]",
           "nl": "Doeltemperatuur !{{is|is niet}} hoger dan [[target_temperature]]"
         },
         "hint": {
@@ -492,9 +492,9 @@
                   "it": "Automatica",
                   "sv": "Automatiskt",
                   "no": "Automatisk",
-                  "es": "Autom\u00e1tico",
+                  "es": "Automático",
                   "da": "Automatisk",
-                  "ru": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438",
+                  "ru": "Автоматически",
                   "pl": "Automatyczny"
                 }
               },
@@ -504,14 +504,14 @@
                   "en": "Off",
                   "nl": "Uit",
                   "de": "Aus",
-                  "fr": "D\u00e9sactiv\u00e9",
+                  "fr": "Désactivé",
                   "it": "Disattivata",
                   "sv": "Av",
                   "no": "Av",
                   "es": "Desactivado",
                   "da": "Deaktiveret",
-                  "ru": "\u0412\u044b\u043a\u043b",
-                  "pl": "Wy\u0142"
+                  "ru": "Выкл",
+                  "pl": "Wył"
                 }
               }
             ]
@@ -521,6 +521,92 @@
       }
     ],
     "actions": [
+      {
+        "title": {
+          "en": "Pet feeder: manual feed",
+          "nl": "Voerautomaat: handmatig voeren"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=tuyapetfeeder"
+          },
+          {
+            "name": "portions",
+            "type": "number",
+            "title": {
+              "en": "Portions (1-50)",
+              "nl": "Porties (1-50)"
+            },
+            "min": 1,
+            "max": 50,
+            "step": 1
+          }
+        ],
+        "id": "petfeeder_manual_feed"
+      },
+      {
+        "title": {
+          "en": "Pet feeder: quick feed",
+          "nl": "Voerautomaat: snel voeren"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=tuyapetfeeder"
+          }
+        ],
+        "id": "petfeeder_quick_feed"
+      },
+      {
+        "title": {
+          "en": "Pet feeder: set meal plan (JSON)",
+          "nl": "Voerautomaat: stel voederschema in (JSON)"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=tuyapetfeeder"
+          },
+          {
+            "name": "meal_plan_json",
+            "type": "text",
+            "title": {
+              "en": "Meal plan JSON",
+              "nl": "Voederschema JSON"
+            }
+          }
+        ],
+        "id": "petfeeder_set_meal_plan"
+      },
+      {
+        "title": {
+          "en": "Pet feeder: set voice prompts",
+          "nl": "Voerautomaat: stel stemoproepen in"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=tuyapetfeeder"
+          },
+          {
+            "name": "voice_times",
+            "type": "number",
+            "title": {
+              "en": "Voice prompts (0-5)",
+              "nl": "Stemoproepen (0-5)"
+            },
+            "min": 0,
+            "max": 5,
+            "step": 1
+          }
+        ],
+        "id": "petfeeder_set_voice_times"
+      },
       {
         "title": {
           "en": "Send false command",
@@ -756,9 +842,9 @@
                   "it": "Automatica",
                   "sv": "Automatiskt",
                   "no": "Automatisk",
-                  "es": "Autom\u00e1tico",
+                  "es": "Automático",
                   "da": "Automatisk",
-                  "ru": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438",
+                  "ru": "Автоматически",
                   "pl": "Automatyczny"
                 }
               },
@@ -768,14 +854,14 @@
                   "en": "Off",
                   "nl": "Uit",
                   "de": "Aus",
-                  "fr": "D\u00e9sactiv\u00e9",
+                  "fr": "Désactivé",
                   "it": "Disattivata",
                   "sv": "Av",
                   "no": "Av",
                   "es": "Desactivado",
                   "da": "Deaktiveret",
-                  "ru": "\u0412\u044b\u043a\u043b",
-                  "pl": "Wy\u0142"
+                  "ru": "Выкл",
+                  "pl": "Wył"
                 }
               }
             ]
@@ -880,92 +966,6 @@
             "type": "number",
             "title": {
               "en": "Target temperature"
-            }
-          }
-        ]
-      },
-      {
-        "id": "petfeeder_quick_feed",
-        "title": {
-          "en": "Pet feeder: quick feed",
-          "nl": "Voerautomaat: snel voeren"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=tuyapetfeeder"
-          }
-        ]
-      },
-      {
-        "id": "petfeeder_manual_feed",
-        "title": {
-          "en": "Pet feeder: manual feed",
-          "nl": "Voerautomaat: handmatig voeren"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=tuyapetfeeder"
-          },
-          {
-            "name": "portions",
-            "type": "number",
-            "title": {
-              "en": "Portions (1-50)",
-              "nl": "Porties (1-50)"
-            },
-            "min": 1,
-            "max": 50,
-            "step": 1
-          }
-        ]
-      },
-      {
-        "id": "petfeeder_set_voice_times",
-        "title": {
-          "en": "Pet feeder: set voice prompts",
-          "nl": "Voerautomaat: stel stemoproepen in"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=tuyapetfeeder"
-          },
-          {
-            "name": "voice_times",
-            "type": "number",
-            "title": {
-              "en": "Voice prompts (0-5)",
-              "nl": "Stemoproepen (0-5)"
-            },
-            "min": 0,
-            "max": 5,
-            "step": 1
-          }
-        ]
-      },
-      {
-        "id": "petfeeder_set_meal_plan",
-        "title": {
-          "en": "Pet feeder: set meal plan (JSON)",
-          "nl": "Voerautomaat: stel voederschema in (JSON)"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=tuyapetfeeder"
-          },
-          {
-            "name": "meal_plan_json",
-            "type": "text",
-            "title": {
-              "en": "Meal plan JSON",
-              "nl": "Voederschema JSON"
             }
           }
         ]
@@ -1746,6 +1746,50 @@
     },
     {
       "images": {
+        "large": "/drivers/tuyapetfeeder/assets/images/large.png",
+        "small": "/drivers/tuyapetfeeder/assets/images/small.png"
+      },
+      "icon": "/drivers/tuyapetfeeder/assets/icon.svg",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "name": {
+        "en": "Pet Feeder",
+        "nl": "Huisdier Voerautomaat"
+      },
+      "class": "other",
+      "capabilities": [
+        "quick_feed",
+        "petfeeder_feed_state",
+        "measure_feed_report",
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "OTHER"
+        ]
+      },
+      "id": "tuyapetfeeder"
+    },
+    {
+      "images": {
         "large": "/drivers/tuyapir/assets/images/large.png",
         "small": "/drivers/tuyapir/assets/images/small.png"
       },
@@ -1948,50 +1992,6 @@
         "measure_power"
       ],
       "id": "tuyaswitch"
-    },
-    {
-      "images": {
-        "large": "/drivers/tuyapetfeeder/assets/images/large.png",
-        "small": "/drivers/tuyapetfeeder/assets/images/small.png"
-      },
-      "icon": "/drivers/tuyapetfeeder/assets/icon.svg",
-      "platforms": [
-        "local"
-      ],
-      "connectivity": [
-        "cloud"
-      ],
-      "pair": [
-        {
-          "id": "list_devices",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_devices"
-          }
-        },
-        {
-          "id": "add_devices",
-          "template": "add_devices"
-        }
-      ],
-      "name": {
-        "en": "Pet Feeder",
-        "nl": "Huisdier Voerautomaat"
-      },
-      "class": "other",
-      "capabilities": [
-        "petfeeder_feed_state",
-        "petfeeder_feed_report",
-        "measure_battery",
-        "alarm_battery",
-        "petfeeder_voice_times"
-      ],
-      "energy": {
-        "batteries": [
-          "OTHER"
-        ]
-      },
-      "id": "tuyapetfeeder"
     }
   ],
   "capabilities": {
@@ -2203,6 +2203,84 @@
         }
       ]
     },
+    "measure_feed_report": {
+      "type": "number",
+      "title": {
+        "en": "Daily portions dispensed",
+        "nl": "Dagelijks uitgedeelde porties"
+      },
+      "units": {
+        "en": "portions",
+        "nl": "porties"
+      },
+      "desc": {
+        "en": "Total number of portions dispensed today",
+        "nl": "Totaal aantal uitgedeelde porties vandaag"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "decimals": 0,
+      "insights": true
+    },
+    "petfeeder_feed_state": {
+      "type": "enum",
+      "title": {
+        "en": "Feeding state",
+        "nl": "Voederstatus"
+      },
+      "desc": {
+        "en": "Current feeding state of the pet feeder",
+        "nl": "Huidige voederstatus van de voerautomaat"
+      },
+      "values": [
+        {
+          "id": "standby",
+          "title": {
+            "en": "Standby",
+            "nl": "Stand-by"
+          }
+        },
+        {
+          "id": "feeding",
+          "title": {
+            "en": "Feeding",
+            "nl": "Voeren"
+          }
+        },
+        {
+          "id": "done",
+          "title": {
+            "en": "Done",
+            "nl": "Klaar"
+          }
+        }
+      ],
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor"
+    },
+    "petfeeder_voice_times": {
+      "type": "number",
+      "title": {
+        "en": "Voice prompts",
+        "nl": "Stemoproepen"
+      },
+      "desc": {
+        "en": "Number of voice prompts played when feeding",
+        "nl": "Aantal stemoproepen bij het voeren"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "slider",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "decimals": 0
+    },
     "poolheatpump_mode": {
       "type": "enum",
       "title": {
@@ -2267,13 +2345,23 @@
       "getable": true,
       "setable": true,
       "units": {
-        "en": "\u00b0C"
+        "en": "°C"
       },
       "min": 8,
       "max": 40,
       "step": 1,
       "decimals": 0,
       "insights": true
+    },
+    "quick_feed": {
+      "type": "boolean",
+      "title": {
+        "en": "Quick Feed",
+        "nl": "Snel voeren"
+      },
+      "getable": false,
+      "setable": true,
+      "uiComponent": "button"
     },
     "thermostat_heater_mode": {
       "type": "enum",
@@ -2282,12 +2370,12 @@
         "nl": "Thermostaat modus",
         "de": "Thermostat-Modus",
         "fr": "Mode thermostat",
-        "it": "Modalit\u00e0 termostato",
-        "sv": "Termostatl\u00e4ge",
+        "it": "Modalità termostato",
+        "sv": "Termostatläge",
         "no": "Termostatmodus",
         "es": "Modo del termostato",
         "da": "Termostattilstand",
-        "ru": "\u0420\u0435\u0436\u0438\u043c \u0442\u0435\u0440\u043c\u043e\u0441\u0442\u0430\u0442\u0430",
+        "ru": "Режим термостата",
         "pl": "Tryb pracy"
       },
       "desc": {
@@ -2295,12 +2383,12 @@
         "nl": "Modus van de thermostaat",
         "de": "Modus des Thermostates",
         "fr": "Mode du thermostat",
-        "it": "Modalit\u00e0 del termostato",
-        "sv": "L\u00e4ge f\u00f6r termostaten",
+        "it": "Modalità del termostato",
+        "sv": "Läge för termostaten",
         "no": "Modus for termostaten",
         "es": "Modo del termostato",
         "da": "Tilstand for termostat",
-        "ru": "\u0420\u0435\u0436\u0438\u043c \u0442\u0435\u0440\u043c\u043e\u0441\u0442\u0430\u0442\u0430",
+        "ru": "Режим термостата",
         "pl": "Tryb termostatu"
       },
       "getable": true,
@@ -2317,9 +2405,9 @@
             "it": "Automatica",
             "sv": "Automatiskt",
             "no": "Automatisk",
-            "es": "Autom\u00e1tico",
+            "es": "Automático",
             "da": "Automatisk",
-            "ru": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438",
+            "ru": "Автоматически",
             "pl": "Automatyczny"
           }
         },
@@ -2329,14 +2417,14 @@
             "en": "Off",
             "nl": "Uit",
             "de": "Aus",
-            "fr": "D\u00e9sactiv\u00e9",
+            "fr": "Désactivé",
             "it": "Disattivata",
             "sv": "Av",
             "no": "Av",
             "es": "Desactivado",
             "da": "Deaktiveret",
-            "ru": "\u0412\u044b\u043a\u043b",
-            "pl": "Wy\u0142"
+            "ru": "Выкл",
+            "pl": "Wył"
           }
         }
       ]
@@ -2348,12 +2436,12 @@
         "nl": "Thermostaat modus",
         "de": "Thermostat-Modus",
         "fr": "Mode thermostat",
-        "it": "Modalit\u00e0 termostato",
-        "sv": "Termostatl\u00e4ge",
+        "it": "Modalità termostato",
+        "sv": "Termostatläge",
         "no": "Termostatmodus",
         "es": "Modo del termostato",
         "da": "Termostattilstand",
-        "ru": "\u0420\u0435\u0436\u0438\u043c \u0442\u0435\u0440\u043c\u043e\u0441\u0442\u0430\u0442\u0430",
+        "ru": "Режим термостата",
         "pl": "Tryb pracy"
       },
       "desc": {
@@ -2361,12 +2449,12 @@
         "nl": "Modus van de thermostaat",
         "de": "Modus des Thermostates",
         "fr": "Mode du thermostat",
-        "it": "Modalit\u00e0 del termostato",
-        "sv": "L\u00e4ge f\u00f6r termostaten",
+        "it": "Modalità del termostato",
+        "sv": "Läge för termostaten",
         "no": "Modus for termostaten",
         "es": "Modo del termostato",
         "da": "Tilstand for termostat",
-        "ru": "\u0420\u0435\u0436\u0438\u043c \u0442\u0435\u0440\u043c\u043e\u0441\u0442\u0430\u0442\u0430",
+        "ru": "Режим термостата",
         "pl": "Tryb termostatu"
       },
       "getable": true,
@@ -2383,9 +2471,9 @@
             "it": "Automatica",
             "sv": "Automatiskt",
             "no": "Automatisk",
-            "es": "Autom\u00e1tico",
+            "es": "Automático",
             "da": "Automatisk",
-            "ru": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438",
+            "ru": "Автоматически",
             "pl": "Automatyczny"
           }
         },
@@ -2397,11 +2485,11 @@
             "de": "Heizen",
             "fr": "Chauffer",
             "it": "Calore",
-            "sv": "V\u00e4rme",
+            "sv": "Värme",
             "no": "Varme",
             "es": "Calentar",
             "da": "Opvarm",
-            "ru": "\u041e\u0431\u043e\u0433\u0440\u0435\u0432",
+            "ru": "Обогрев",
             "pl": "Ogrzewanie"
           }
         },
@@ -2410,15 +2498,15 @@
           "title": {
             "en": "Cool",
             "nl": "Koelen",
-            "de": "K\u00fchlen",
+            "de": "Kühlen",
             "fr": "Refroidir",
             "it": "Raffreddamento",
             "sv": "Kyla",
-            "no": "Avkj\u00f8le",
+            "no": "Avkjøle",
             "es": "Enfriar",
-            "da": "K\u00f8l ned",
-            "ru": "\u041e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u0435",
-            "pl": "Ch\u0142odzenie"
+            "da": "Køl ned",
+            "ru": "Охлаждение",
+            "pl": "Chłodzenie"
           }
         },
         {
@@ -2429,11 +2517,11 @@
             "de": "Fan",
             "fr": "Ventilateur",
             "it": "Fan",
-            "sv": "Fl\u00e4kt",
+            "sv": "Fläkt",
             "no": "Fan",
             "es": "Admirador",
             "da": "Ventilator",
-            "ru": "\u041f\u043e\u043a\u043b\u043e\u043d\u043d\u0438\u043a",
+            "ru": "Поклонник",
             "pl": "Wentylacja"
           }
         },
@@ -2446,10 +2534,10 @@
             "fr": "Sec",
             "it": "Asciutto",
             "sv": "Torr",
-            "no": "T\u00f8rke",
+            "no": "Tørke",
             "es": "Seco",
-            "da": "T\u00f8r",
-            "ru": "\u0421\u0443\u0445\u043e\u0439",
+            "da": "Tør",
+            "ru": "Сухой",
             "pl": "Osuszanie"
           }
         },
@@ -2459,91 +2547,17 @@
             "en": "Off",
             "nl": "Uit",
             "de": "Aus",
-            "fr": "D\u00e9sactiv\u00e9",
+            "fr": "Désactivé",
             "it": "Disattivata",
             "sv": "Av",
             "no": "Av",
             "es": "Desactivado",
             "da": "Deaktiveret",
-            "ru": "\u0412\u044b\u043a\u043b",
-            "pl": "Wy\u0142"
+            "ru": "Выкл",
+            "pl": "Wył"
           }
         }
       ]
-    },
-    "petfeeder_feed_state": {
-      "type": "enum",
-      "title": {
-        "en": "Feeding state",
-        "nl": "Voederstatus"
-      },
-      "desc": {
-        "en": "Current feeding state of the pet feeder",
-        "nl": "Huidige voederstatus van de voerautomaat"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor",
-      "values": [
-        {
-          "id": "standby",
-          "title": {
-            "en": "Standby",
-            "nl": "Stand-by"
-          }
-        },
-        {
-          "id": "feeding",
-          "title": {
-            "en": "Feeding",
-            "nl": "Voeren"
-          }
-        },
-        {
-          "id": "done",
-          "title": {
-            "en": "Done",
-            "nl": "Klaar"
-          }
-        }
-      ]
-    },
-    "petfeeder_feed_report": {
-      "type": "number",
-      "title": {
-        "en": "Portions dispensed",
-        "nl": "Uitgedeelde porties"
-      },
-      "desc": {
-        "en": "Number of portions actually dispensed",
-        "nl": "Aantal daadwerkelijk uitgedeelde porties"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "decimals": 0,
-      "insights": true
-    },
-    "petfeeder_voice_times": {
-      "type": "number",
-      "title": {
-        "en": "Voice prompts",
-        "nl": "Stemoproepen"
-      },
-      "desc": {
-        "en": "Number of voice prompts played when feeding",
-        "nl": "Aantal stemoproepen bij het voeren"
-      },
-      "getable": true,
-      "setable": true,
-      "uiComponent": "slider",
-      "min": 0,
-      "max": 5,
-      "step": 1,
-      "decimals": 0
     }
   }
 }
