@@ -9,8 +9,7 @@
     "petfeeder_feed_state",
     "petfeeder_feed_report",
     "measure_battery",
-    "alarm_battery",
-    "petfeeder_voice_times"
+    "alarm_battery"
   ],
   "energy": {
     "batteries": [ "OTHER" ]
