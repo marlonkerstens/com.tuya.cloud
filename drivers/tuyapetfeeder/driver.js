@@ -75,7 +75,7 @@ class TuyaPetFeederDriver extends TuyaBaseDriver {
                 capabilities: [
                     'quick_feed',
                     'petfeeder_feed_state',
-                    'petfeeder_feed_report',
+                    'measure_feed_report',
                     'measure_battery',
                     'alarm_battery'
                 ],
