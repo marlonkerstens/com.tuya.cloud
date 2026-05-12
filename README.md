@@ -31,7 +31,7 @@ Again, go to forum for latest info on this issue
 * Presense sensor
 * Air conditioner
 * (W'eau/Fairland) Pool heat pump → make sure the device is in DP Instruction mode!
-* Pet Feeder (automatic food dispenser, Tuya category `cwwsq`)
+* Pet Feeder
 
 ### Not supported devices or functions
 
