@@ -19,6 +19,7 @@ class TuyaPetFeederDevice extends TuyaBaseDevice {
         if (this.getCapabilityValue('measure_feed_report') === null) {
             this.setCapabilityValue('measure_feed_report', 0).catch(this.error);
         }
+        this._scheduleMidnightReset();
         this.log(`Tuya Pet Feeder ${this.getName()} has been initialized`);
     }
 
@@ -59,9 +60,11 @@ class TuyaPetFeederDevice extends TuyaBaseDevice {
                     }
                     break;
 
-                case 'feed_report':
-                    this.normalAsync('measure_feed_report', status.value);
+                case 'feed_report': {
+                    const current = this.getCapabilityValue('measure_feed_report') || 0;
+                    this.normalAsync('measure_feed_report', current + status.value);
                     break;
+                }
 
                 case 'battery_percentage':
                     this.normalAsync('measure_battery', status.value);
@@ -84,6 +87,18 @@ class TuyaPetFeederDevice extends TuyaBaseDevice {
                     break;
             }
         }
+    }
+
+    _scheduleMidnightReset() {
+        const now = new Date();
+        const midnight = new Date(now);
+        midnight.setHours(24, 0, 0, 0);
+        const msUntilMidnight = midnight - now;
+        this.homey.setTimeout(() => {
+            this.log('Midnight reset: clearing daily feed report');
+            this.setCapabilityValue('measure_feed_report', 0).catch(this.error);
+            this._scheduleMidnightReset();
+        }, msUntilMidnight);
     }
 
     normalAsync(name, value) {

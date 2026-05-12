@@ -1,8 +1,8 @@
 {
   "type": "number",
-  "title": { "en": "Portions dispensed", "nl": "Uitgedeelde porties" },
+  "title": { "en": "Daily portions dispensed", "nl": "Dagelijks uitgedeelde porties" },
   "units": { "en": "portions", "nl": "porties" },
-  "desc": { "en": "Number of portions actually dispensed", "nl": "Aantal daadwerkelijk uitgedeelde porties" },
+  "desc": { "en": "Total number of portions dispensed today", "nl": "Totaal aantal uitgedeelde porties vandaag" },
   "getable": true,
   "setable": false,
   "uiComponent": "sensor",
