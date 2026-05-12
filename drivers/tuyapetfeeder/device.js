@@ -16,6 +16,9 @@ class TuyaPetFeederDevice extends TuyaBaseDevice {
         this.registerCapabilityListener('quick_feed', async () => {
             this.quickFeed();
         });
+        if (this.getCapabilityValue('petfeeder_feed_report') === null) {
+            this.setCapabilityValue('petfeeder_feed_report', 0).catch(this.error);
+        }
         this.log(`Tuya Pet Feeder ${this.getName()} has been initialized`);
     }
 
