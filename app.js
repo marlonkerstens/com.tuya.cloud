@@ -230,7 +230,8 @@ class TuyaCloudApp extends Homey.App {
                 return this.homey.drivers.getDriver('tuyaleak');
             case 'presenceSensor':
                 return this.homey.drivers.getDriver('tuyapresence');
-                //contact sensor
+            case 'petFeeder':
+                return this.homey.drivers.getDriver('tuyapetfeeder');
             case 'poolheatpump':
                 return this.homey.drivers.getDriver('poolheatpump');
             default:
