@@ -60,11 +60,9 @@ class TuyaPetFeederDevice extends TuyaBaseDevice {
                     }
                     break;
 
-                case 'feed_report': {
-                    const current = this.getCapabilityValue('measure_feed_report') || 0;
-                    this.normalAsync('measure_feed_report', current + status.value);
+                case 'feed_report':
+                    this.normalAsync('measure_feed_report', status.value);
                     break;
-                }
 
                 case 'battery_percentage':
                     this.normalAsync('measure_battery', status.value);
