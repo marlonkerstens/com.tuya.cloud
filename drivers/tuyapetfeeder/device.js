@@ -70,14 +70,11 @@ class TuyaPetFeederDevice extends TuyaBaseDevice {
                     break;
 
                 case 'voice_times':
-                    if (this.hasCapability('petfeeder_voice_times')) {
-                        this.normalAsync('petfeeder_voice_times', status.value);
-                    }
+                    this.normalAsync('petfeeder_voice_times', status.value);
                     break;
 
-                // meal_plan is Raw/complex – we only log it, not displayed in UI
                 case 'meal_plan':
-                    this.log('meal_plan update received: ' + JSON.stringify(status.value));
+                    this.normalAsync('petfeeder_meal_plan', JSON.stringify(status.value));
                     break;
 
                 default:

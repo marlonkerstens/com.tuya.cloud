@@ -1,0 +1,8 @@
+{
+  "type": "string",
+  "title": { "en": "Meal plan", "nl": "Voerschema" },
+  "desc": { "en": "Scheduled feeding plan (set via flows)", "nl": "Gepland voerschema (instellen via flows)" },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor"
+}
