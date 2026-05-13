@@ -1,5 +1,5 @@
 {
-  "id": "com.tuya.cloud",
+  "id": "com.tuya.cloud.continued",
   "sdk": 3,
   "name": {
     "en": "Tuya cloud"
@@ -10,7 +10,7 @@
     "nl": "Deze app laat je connectie maken met de Tuya cloud"
   },
   "category": "lights",
-  "version": "1.1.27",
+  "version": "1.1.28",
   "compatibility": ">=12.0.0",
   "author": {
     "name": "Marlon Kerstens",

@@ -9,7 +9,7 @@ On the community forum you can get answeres and support for your issues by me or
 
 # Tuya cloud
 ![image](https://user-images.githubusercontent.com/17513366/194271163-0155abe3-9cfd-4fc8-8cdf-290aac7af2e9.png)
-https://homey.app/nl-nl/app/com.tuya.cloud/Tuya-cloud/
+https://homey.app/nl-nl/app/com.tuya.cloud.continued/Tuya-cloud/
 
 Homey App for the Tuya cloud.
 
