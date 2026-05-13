@@ -172,5 +172,8 @@
   },
   "1.1.27": {
     "en": "Project taken over by Marlon Kerstens. Pet feeder support added: feeding state, manual feed, quick feed, voice prompts, meal planning and daily portion tracking"
-  }
+  },
+    "1.1.28": {
+        "en": "Patches to latest versions. fixed some bugs."
+    }
 }

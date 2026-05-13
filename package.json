@@ -1,5 +1,5 @@
 {
-  "name": "com.tuya.cloud",
+  "name": "com.tuya.cloud.continued",
   "version": "0.0.1",
   "description": "This app allows you to connect Homey to the Tuya cloud",
   "main": "app.js",
