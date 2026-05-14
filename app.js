@@ -256,9 +256,11 @@ class TuyaCloudApp extends Homey.App {
             return;
         }
         this.log("Device found");
+        // Mark timestamp so the device's direct MQTT listener can dedup
+        if (homeyDevice._lastMqttUpdateTime !== undefined) {
+            homeyDevice._lastMqttUpdateTime = Date.now();
+        }
         homeyDevice.updateCapabilities(status);
-
-
 
     }
 

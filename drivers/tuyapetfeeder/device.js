@@ -46,10 +46,15 @@ class TuyaPetFeederDevice extends TuyaBaseDevice {
 
         // ── Direct MQTT listener ─────────────────────────────────────────────
         // Bypass app.js routing — ensures we receive MQTT messages even if
-        // the generic routing has issues for this device type
+        // the generic routing has issues for this device type.
+        // Dedup: ignore if we already processed an identical update within 2s
+        this._lastMqttUpdateTime = 0;
         this._mqttListener = (data) => {
             if (data && data.devId === this.id && Array.isArray(data.status)) {
-                this.log('MQTT direct listener: received status for this device');
+                const now = Date.now();
+                if (now - this._lastMqttUpdateTime < 2000) return; // dedup with app.js route
+                this._lastMqttUpdateTime = now;
+                this.log('MQTT direct: received status update');
                 this.updateCapabilities(data.status, true);
             }
         };
