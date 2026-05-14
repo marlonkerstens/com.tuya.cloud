@@ -77,7 +77,9 @@ class TuyaPetFeederDriver extends TuyaBaseDriver {
                     'petfeeder_feed_state',
                     'measure_feed_report',
                     'measure_battery',
-                    'alarm_battery'
+                    'alarm_battery',
+                    'petfeeder_voice_times',
+                    'petfeeder_meal_plan'
                 ],
                 name: tuyaDevice.name
             });

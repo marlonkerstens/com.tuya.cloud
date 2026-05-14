@@ -11,7 +11,7 @@
     "nl": "Deze app laat je connectie maken met de Tuya cloud"
   },
   "category": "lights",
-  "version": "1.1.28",
+  "version": "1.1.29",
   "compatibility": ">=12.0.0",
   "author": {
     "name": "Marlon Kerstens",
@@ -1782,7 +1782,9 @@
         "petfeeder_feed_state",
         "measure_feed_report",
         "measure_battery",
-        "alarm_battery"
+        "alarm_battery",
+        "petfeeder_voice_times",
+        "petfeeder_meal_plan"
       ],
       "energy": {
         "batteries": [
@@ -2262,6 +2264,20 @@
           }
         }
       ],
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor"
+    },
+    "petfeeder_meal_plan": {
+      "type": "string",
+      "title": {
+        "en": "Meal plan",
+        "nl": "Voerschema"
+      },
+      "desc": {
+        "en": "Scheduled feeding plan (set via flows)",
+        "nl": "Gepland voerschema (instellen via flows)"
+      },
       "getable": true,
       "setable": false,
       "uiComponent": "sensor"

@@ -147,6 +147,7 @@ class TuyaCloudApp extends Homey.App {
     }
 
     async onMQTTMessage(message) {
+        this.log(`MQTT message received: devId=${message.devId || '(bizCode)'} bizCode=${message.bizCode || 'none'}`);
         if (message.bizCode) {
             if (message.bizCode === 'delete') {
                 this.log(message.devId + ' removed');
@@ -182,12 +183,16 @@ class TuyaCloudApp extends Homey.App {
     async refreshDeviceStates(message) {
         let device = this.get_device_by_devid(message.devId);
         if (device == null) {
+            this.log(`MQTT: devId ${message.devId} not found in device list — message dropped`);
             return;
         }
         let type = TuyaBaseDriver.get_type_by_category(device.category);
+        this.log(`MQTT: devId=${message.devId} category=${device.category} type=${type}`);
         let driver = this.getTypeDriver(type);
         if (driver != null) {
             this.updateCapabilities(driver, message.devId, message.status);
+        } else {
+            this.log(`MQTT: no driver found for type '${type}' — message dropped`);
         }
     }
 
@@ -251,9 +256,11 @@ class TuyaCloudApp extends Homey.App {
             return;
         }
         this.log("Device found");
+        // Mark timestamp so the device's direct MQTT listener can dedup
+        if (homeyDevice._lastMqttUpdateTime !== undefined) {
+            homeyDevice._lastMqttUpdateTime = Date.now();
+        }
         homeyDevice.updateCapabilities(status);
-
-
 
     }
 
